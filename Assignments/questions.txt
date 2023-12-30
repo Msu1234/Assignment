@@ -1,0 +1,54 @@
+1. 
+2. List the departments and the number of employees in each department.
+3. Find the average salary for each gender (M and F) in the 'salaries' table.
+4. Get the employees' names and their current job titles.
+5. Find the employees who have worked in more than one department and list their names.
+6. Retrieve the employees who were born before 1980 and have a 'Manager' title.
+7. List the employees who have changed their titles at least three times.
+8. Find the departments where no manager has worked.
+9. Get the total number of employees in each department as of a specific date.
+10. List the employees who have never changed their titles.
+11. Retrieve the employees who have…
+ CREATE TABLE salaries (
+  emp_no INT (10) NOT NULL,
+  salary INT (11) NOT NULL,
+  from_date DATE NOT NULL,
+  to_date DATE NOT NULL,
+  PRIMARY KEY (emp_no, from_date)
+);
+
+CREATE TABLE employees (
+  emp_no INT (10) NOT NULL,
+  birth_date DATE NOT NULL,
+  PRIMARY KEY (emp_no)
+);
+
+CREATE TABLE titles (
+  emp_no INT (10) NOT NULL,
+  gender ENUM ('M', 'F') NOT NULL,
+  title VARCHAR (50) NOT NULL,
+  from_date DATE NOT NULL,
+  PRIMARY KEY (emp_no, from_date)
+);
+
+CREATE TABLE dept_emp (
+  emp_no INT (10) NOT NULL,
+  dept_no CHAR (4) NOT NULL,
+  from_date DATE NOT NULL,
+  to_date DATE NOT NULL,
+  PRIMARY KEY (emp_no, dept_no, from_date)
+);
+
+CREATE TABLE dept_manager (
+  dept_no CHAR (4) NOT NULL,
+  emp_no INT (10) NOT NULL,
+  from_date DATE NOT NULL,
+  to_date DATE NOT NULL,
+  PRIMARY KEY (dept_no, emp_no, from_date)
+);
+
+CREATE TABLE departments (
+  dept_no CHAR (4) NOT NULL,
+  dept_name VARCHAR (40) NOT NULL,
+  PRIMARY KEY (dept_no)
+);
